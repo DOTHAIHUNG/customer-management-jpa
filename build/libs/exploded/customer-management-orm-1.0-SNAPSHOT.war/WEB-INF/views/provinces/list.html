@@ -8,6 +8,11 @@
         Add new province
     </a>
 </p>
+<p>
+    <a th:href="@{/}">
+        Back to customer list
+    </a>
+</p>
 <div class="notify">
     <div th:if="${message}">
         <span th:text="${message}"></span>
@@ -19,6 +24,7 @@
         <th>Name</th>
         <th>ZipCode</th>
         <th>Edit</th>
+        <th>View</th>
         <th>Delete</th>
     </tr>
     </thead>

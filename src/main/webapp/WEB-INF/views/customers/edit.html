@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
-<h3>Modify Customer</h3>
+<h3 th:text="#{edit.title}"></h3>
 <p>
-    <a th:href="@{/}">
-        Back to customer list
+    <a th:href="@{/}" th:text="#{customer.a}">
     </a>
 </p>
 <div id="form">
@@ -13,15 +12,15 @@
         <input th:type="hidden" name="id" th:field="*{id}">
         <table>
             <tr>
-                <td>FirstName:</td>
+                <td th:text="#{cus.firstName}"></td>
                 <td><input type="text" th:field="*{firstName}"/></td>
             </tr>
             <tr>
-                <td>LastName:</td>
+                <td th:text="#{cus.lastName}"></td>
                 <td><input type="text" th:field="*{lastName}"/></td>
             </tr>
             <tr>
-                <td>Province:</td>
+                <td th:text="#{cus.province}"></td>
                 <td>
                     <select name="province">
                         <option th:each="p: ${provinces}"
@@ -34,7 +33,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Update customer"></td>
+                <td><input type="submit" th:value="#{edit.save}"></td>
             </tr>
         </table>
     </form>

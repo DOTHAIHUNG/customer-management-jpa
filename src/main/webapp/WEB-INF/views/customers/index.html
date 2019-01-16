@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"hang >
 <head th:replace="layout :: head"></head>
 <body>
-<h3>Customers</h3>
+<h3 th:text="#{h3.title}"></h3>
+<a href="?lang=en">English</a> | <a href="?lang=vi_VN">Tiếng Việt</a>
 <p>
-    <a th:href="@{/create-customer}">
-        Add new customer
+    <a th:href="@{/create-customer}" th:text="#{a.customer}">
     </a>
 </p>
 <p>
-    <a th:href="@{/provinces}">
-        Go to province list
+    <a th:href="@{/provinces}" th:text="#{a.province}">
     </a>
 </p>
 <div class="notify">
     <div th:if="${success}">
-        <span th:text="${success}"></span>
+        <span th:text="#{success}"></span>
     </div>
 </div>
 <form>
-    Search by first name:
+    <p th:text="#{p.search}"></p>
     <input name="s" type="text"/>
-    <input type="submit" value="Search"/>
+    <input type="submit" th:value="#{search.button}"/>
 </form>
 <div>
-    <a th:href="@{'/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+    <a th:href="@{'/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}" th:text="#{previous.button}"></a>
     <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+    <a th:href="@{'/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}" th:text="#{next.button}"></a>
 </div>
 <table id="customers">
     <thead>
     <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Province</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>View</th>
+        <th th:text="#{title.firstName}"></th>
+        <th th:text="#{title.lastName}"></th>
+        <th th:text="#{title.province}">Province</th>
+        <th th:text="#{title.edit}"></th>
+        <th th:text="#{title.delete}"></th>
+        <th th:text="#{title.view}"></th>
     </tr>
     </thead>
     <tbody>
@@ -44,9 +43,9 @@
         <td th:text="${customer.firstName}"></td>
         <td th:text="${customer.lastName}"></td>
         <td th:text="${customer.province.name}"></td>
-        <td><a th:href="@{/edit-customer/__${customer.id}__}">Edit</a></td>
-        <td><a th:href="@{/delete-customer/__${customer.id}__}">Delete</a></td>
-        <td><a th:href="@{/view-customer/__${customer.id}__}">View</a></td>
+        <td><a th:href="@{/edit-customer/__${customer.id}__}" th:text="#{title.edit}"></a></td>
+        <td><a th:href="@{/delete-customer/__${customer.id}__}" th:text="#{title.delete}"></a></td>
+        <td><a th:href="@{/view-customer/__${customer.id}__}" th:text="#{title.view}"></a></td>
     </tr>
     </tbody>
 </table>

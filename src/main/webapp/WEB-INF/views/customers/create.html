@@ -2,32 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
-<h3>Add Customer</h3>
+<h3 th:text="#{create.title}"></h3>
 <p>
-    <a th:href="@{/}">
-        Back to customer list
+    <a th:href="@{/}" th:text="#{customer.a}">
     </a>
 </p>
 <div id="form">
     <form th:action="@{/create-customer}" th:object="${customer}" method="post">
         <table>
             <tr>
-                <td>FirstName:</td>
+                <td th:text="#{cus.firstName}"></td>
                 <td><input type="text" th:field="*{firstName}"/></td>
             </tr>
             <tr>
-                <td>LastName:</td>
+                <td th:text="#{cus.lastName}"></td>
                 <td><input type="text" th:field="*{lastName}"/></td>
             </tr>
             <tr>
-                <td>Province:</td>
+                <td th:text="#{cus.province}"></td>
                 <td><select th:field="*{province}">
                     <option th:each="p: ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
                 </select></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save"></td>
+                <td><input type="submit" th:value="#{create.save}"></td>
             </tr>
         </table>
     </form>
